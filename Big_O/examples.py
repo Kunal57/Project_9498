@@ -164,23 +164,44 @@ import timeit
 # # 0.47616493998793885
 # # O(2^N)
 
-# EXAMPLE 14
-def example14a(number):
-  for x in range(number+1):
-    print("%s : %s" % (x, example14b(x)))
+# # EXAMPLE 14
+# def example14a(number):
+#   for x in range(number + 1):
+#     print("%s : %s" % (x, example14b(x)))
 
-def example14b(number):
+# def example14b(number):
+#   if number <= 0:
+#     return 0
+#   elif number == 1:
+#     return 1
+#   else:
+#     return example14b(number-1) + example14b(number-2)
+
+# t = timeit.timeit('example14a(15)', setup='from __main__ import example14a', number=1000)
+# print(t)
+# # 1.2958954759524204
+# # O(2^N)
+
+# EXAMPLE 15
+def example15a(number):
+  cache = []
+  for x in range(number + 1):
+    print("%s : %s" % (x, example15b(x, cache)))
+
+def example15b(number, cache):
   if number <= 0:
     return 0
   elif number == 1:
     return 1
+  elif len(cache) > number:
+    return cache[number]
   else:
-    return example14b(number-1) + example14b(number-2)
+    cache.append(example15b(number - 1, cache) + example15b(number - 2, cache))
+    return cache[-1]
 
-t = timeit.timeit('example14a(15)', setup='from __main__ import example14a', number=1000)
+t = timeit.timeit('example15a(15)', setup='from __main__ import example15a', number=1000)
 print(t)
-# 1.2958954759524204
-# O(2^N)
+# 0.5006287230062298
+# O(N)
 
-# EXAMPLE 15
 # EXAMPLE 16
