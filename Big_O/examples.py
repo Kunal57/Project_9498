@@ -28,19 +28,29 @@ import timeit
 # # 1.740927321021445
 # # O(N^2)
 
-# EXAMPLE 3
-def example3(array):
-  for x in range(len(array)):
-    for y in range(x+1, len(array)):
-      print("%s, %s" % (x, y))
+# # EXAMPLE 3
+# def example3(array):
+#   for x in range(len(array)):
+#     for y in range(x+1, len(array)):
+#       print("%s, %s" % (x, y))
 
-t = timeit.timeit('example3([1,2,3,4,5,6,7,8,9,10])', setup='from __main__ import example3', number=1000)
-print(t)
-# 0.7609443860128522
-# O(N^2)
+# t = timeit.timeit('example3([1,2,3,4,5,6,7,8,9,10])', setup='from __main__ import example3', number=1000)
+# print(t)
+# # 0.7609443860128522
+# # O(N^2)
 
 # EXAMPLE 4
+def example4(arrayA, arrayB):
+  for x in range(len(arrayA)):
+    for y in range(len(arrayB)):
+      if x < y:
+        print("%s, %s" % (x, y))
 
+t = timeit.timeit('example4([1,2,3,4,5,6,7,8,9,10], [11,12,13,14,15,16,17,18,19,20])', setup='from __main__ import example4', number=1000)
+print(t)
+# 1.1923439019592479
+# O(ab)
+# Two separate inputs as arrays. This means that depending on the size of each array, it will execute more or less than O(N^2)
 
 # EXAMPLE 5
 # EXAMPLE 6
