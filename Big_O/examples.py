@@ -85,7 +85,21 @@ import timeit
 # O(N + M) != O(N)
 
 # EXAMPLE 8
+def example8(array):
+  for x in range(len(array)):
+    # O(a * s log s)) to sort each string
+    array[x] = "".join(sorted(array[x]))
+  # O(s) for each string comparison & O(a log a) for each comparison
+  print(sorted(array))
+
+t = timeit.timeit('example8(["kunal", "patel", "elon", "musk"])', setup='from __main__ import example8', number=1000)
+print(t)
+# 0.022029696963727474
+# a * s(log a + log s), where a = length of array & s = length of string
+
 # EXAMPLE 9
+
+
 # EXAMPLE 10
 # EXAMPLE 11
 # EXAMPLE 12
