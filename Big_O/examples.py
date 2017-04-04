@@ -72,7 +72,6 @@ import timeit
 #     array[x] = array[other]
 #     array[other] = temp
 
-
 # t = timeit.timeit('example6([1,2,3,4,5,6,7,8,9,10])', setup='from __main__ import example6', number=1000)
 # print(t)
 # # 0.0018980849999934435
@@ -84,21 +83,40 @@ import timeit
 # O(N + log N) == O(N)
 # O(N + M) != O(N)
 
-# EXAMPLE 8
-def example8(array):
-  for x in range(len(array)):
-    # O(a * s log s)) to sort each string
-    array[x] = "".join(sorted(array[x]))
-  # O(s) for each string comparison & O(a log a) for each comparison
-  print(sorted(array))
+# # EXAMPLE 8
+# def example8(array):
+#   for x in range(len(array)):
+#     # O(a * s log s)) to sort each string
+#     array[x] = "".join(sorted(array[x]))
+#   # O(s) for each string comparison & O(a log a) for each comparison
+#   print(sorted(array))
 
-t = timeit.timeit('example8(["kunal", "patel", "elon", "musk"])', setup='from __main__ import example8', number=1000)
-print(t)
-# 0.022029696963727474
-# a * s(log a + log s), where a = length of array & s = length of string
+# t = timeit.timeit('example8(["kunal", "patel", "elon", "musk"])', setup='from __main__ import example8', number=1000)
+# print(t)
+# # 0.022029696963727474
+# # a * s(log a + log s), where a = length of array & s = length of string
 
 # EXAMPLE 9
+def example9(array):
+  if len(array) == 0:
+    return 0
+  else:
+    middle = int(len(array)/2)
+    return example9(array[:middle]) + array[middle] + example9(array[middle+1:])
 
+# The code touches each number in the tree once and does a constant time amount of work with each "touch" (excluding recursive calls)
+
+# Recursive Pattern
+# O(branches^depth), where # of branches is 2 & depth is log N
+# P = 2^log N
+# log2 P = log2 N
+# P = N
+# 2^log N = N
+
+t = timeit.timeit('(example9([1,2,3,4,5,6,7,8,9,10]))', setup='from __main__ import example9', number=1000)
+print(t)
+# 0.010356953018344939
+# O(N), where N is the number of nodes
 
 # EXAMPLE 10
 # EXAMPLE 11
