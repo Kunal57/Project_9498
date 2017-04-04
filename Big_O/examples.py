@@ -79,6 +79,11 @@ import timeit
 # # O(N)
 
 # EXAMPLE 7
+# O(N + P), where P < N/2 == O(N)
+# O(2N) == O(N)
+# O(N + log N) == O(N)
+# O(N + M) != O(N)
+
 # EXAMPLE 8
 # EXAMPLE 9
 # EXAMPLE 10
