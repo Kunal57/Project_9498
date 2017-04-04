@@ -182,26 +182,42 @@ import timeit
 # # 1.2958954759524204
 # # O(2^N)
 
-# EXAMPLE 15
-def example15a(number):
-  cache = []
-  for x in range(number + 1):
-    print("%s : %s" % (x, example15b(x, cache)))
+# # EXAMPLE 15
+# def example15a(number):
+#   cache = []
+#   for x in range(number + 1):
+#     print("%s : %s" % (x, example15b(x, cache)))
 
-def example15b(number, cache):
-  if number <= 0:
-    return 0
-  elif number == 1:
-    return 1
-  elif len(cache) > number:
-    return cache[number]
-  else:
-    cache.append(example15b(number - 1, cache) + example15b(number - 2, cache))
-    return cache[-1]
+# def example15b(number, cache):
+#   if number <= 0:
+#     return 0
+#   elif number == 1:
+#     return 1
+#   elif len(cache) > number:
+#     return cache[number]
+#   else:
+#     cache.append(example15b(number - 1, cache) + example15b(number - 2, cache))
+#     return cache[-1]
 
-t = timeit.timeit('example15a(15)', setup='from __main__ import example15a', number=1000)
-print(t)
-# 0.5006287230062298
-# O(N)
+# t = timeit.timeit('example15a(15)', setup='from __main__ import example15a', number=1000)
+# print(t)
+# # 0.5006287230062298
+# # O(N)
 
 # EXAMPLE 16
+def example16(number):
+  if number < 1:
+    return 0
+  elif number == 1:
+    print("1")
+    return 1
+  else:
+    prev = example16(int(number/2))
+    curr = prev * 2
+    print(curr)
+    return curr
+
+t = timeit.timeit('example16(50)', setup='from __main__ import example16', number=1000)
+print(t)
+# 0.03213428397430107
+# O(log N)
