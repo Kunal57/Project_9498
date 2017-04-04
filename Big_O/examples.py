@@ -118,23 +118,36 @@ import timeit
 # # 0.010356953018344939
 # # O(N), where N is the number of nodes
 
-# EXAMPLE 10
-def example10(number):
-  counter = 2
-  squared = 4
-  while (squared <= number):
-    if number % counter == 0:
-      return False
-    counter += 1
-    squared = counter * counter
-  return True
+# # EXAMPLE 10
+# def example10(number):
+#   counter = 2
+#   squared = 4
+#   while (squared <= number):
+#     if number % counter == 0:
+#       return False
+#     counter += 1
+#     squared = counter * counter
+#   return True
 
-t = timeit.timeit('example10(17)', setup='from __main__ import example10', number=1000)
-print(t)
-# 0.0005029190215282142
-# O(√n)
+# t = timeit.timeit('example10(17)', setup='from __main__ import example10', number=1000)
+# print(t)
+# # 0.0005029190215282142
+# # O(√n)
 
 # EXAMPLE 11
+def example11(number):
+  if number < 0:
+    return -1
+  elif number == 0:
+    return 1
+  else:
+    return number * example11(number - 1)
+
+t = timeit.timeit('example11(5)', setup='from __main__ import example11', number=1000)
+print(t)
+# 0.0010335730039514601
+# O(N)
+
 # EXAMPLE 12
 # EXAMPLE 13
 # EXAMPLE 14
