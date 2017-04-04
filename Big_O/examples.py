@@ -134,22 +134,36 @@ import timeit
 # # 0.0005029190215282142
 # # O(√n)
 
-# EXAMPLE 11
-def example11(number):
-  if number < 0:
-    return -1
-  elif number == 0:
-    return 1
-  else:
-    return number * example11(number - 1)
+# # EXAMPLE 11
+# def example11(number):
+#   if number < 0:
+#     return -1
+#   elif number == 0:
+#     return 1
+#   else:
+#     return number * example11(number - 1)
 
-t = timeit.timeit('example11(5)', setup='from __main__ import example11', number=1000)
-print(t)
-# 0.0010335730039514601
-# O(N)
+# t = timeit.timeit('example11(5)', setup='from __main__ import example11', number=1000)
+# print(t)
+# # 0.0010335730039514601
+# # O(N)
 
 # EXAMPLE 12
 # EXAMPLE 13
+def example13(number):
+  if number < 0:
+    return 0
+  elif number == 1:
+    return 1
+  else:
+    return example13(number - 1) + example13(number - 2)
+
+t = timeit.timeit('example13(15)', setup='from __main__ import example13', number=1000)
+print(t)
+# O(branches^depth)
+# 0.47616493998793885
+# O(N^2)
+
 # EXAMPLE 14
 # EXAMPLE 15
 # EXAMPLE 16
