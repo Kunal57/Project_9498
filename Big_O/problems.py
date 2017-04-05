@@ -43,20 +43,31 @@
 # print(divison(100, 10))
 # # O(a/b)
 
-# PROBLEM 5
-def squareRoot(number, max, min):
-  print(number, max, min)
-  if max < min:
-    return -1 # No perfect square
+# # PROBLEM 5
+# def squareRoot(number, max, min):
+#   print(number, max, min)
+#   if max < min:
+#     return -1 # No perfect square
 
-  mid = int((max - min)/2) + min
-  guess = mid * mid
+#   mid = int((max - min)/2) + min
+#   guess = mid * mid
 
-  if guess == number:
-    return mid # Perfect square
-  elif guess > number:
-    return squareRoot(number, mid - 1, min)
-  elif guess < number:
-    return squareRoot(number, max, mid + 1)
+#   if guess == number:
+#     return mid # Perfect square
+#   elif guess > number:
+#     return squareRoot(number, mid - 1, min)
+#   elif guess < number:
+#     return squareRoot(number, max, mid + 1)
 
-print(squareRoot(225, 225, 0))
+# print(squareRoot(225, 225, 0))
+
+# PROBLEM 6
+def squareRoot(number):
+  count = 1
+  while (count * count) < number:
+    count += 1
+    if count * count == number:
+      return count # Perfect square
+  return -1 # No perfect square
+
+print(squareRoot(226))
