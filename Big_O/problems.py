@@ -6,7 +6,7 @@
 #   return sum
 
 # print(product(8,10))
-# # O(N)
+# # O(b)
 
 # # PROBLEM 2
 # def compute(a, b):
@@ -18,7 +18,7 @@
 #     return a * compute(a, b - 1)
 
 # print(compute(3, 3))
-# # O(N)
+# # O(b)
 
 # # PROBLEM 3
 # def remainder(a, b):
@@ -41,4 +41,4 @@ def divison(a, b):
   return count
 
 print(divison(100, 10))
-# O(N)
+# O(a/b)
