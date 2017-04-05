@@ -80,20 +80,31 @@
 # # PROBELM 8
 # # O(n)
 
-# PROBLEM 9
-def copyArray(array):
-  copy = []
-  copy.append(array[0])
-  for x in range(1, len(array)):
-    copy = appendToNew(copy, array[x])
-  return copy
+# # PROBLEM 9
+# def copyArray(array):
+#   copy = []
+#   copy.append(array[0])
+#   for x in range(1, len(array)):
+#     copy = appendToNew(copy, array[x])
+#   return copy
 
-def appendToNew(array, value):
-  bigger = []
-  for x in range(len(array)):
-    bigger.append(array[x])
+# def appendToNew(array, value):
+#   bigger = []
+#   for x in range(len(array)):
+#     bigger.append(array[x])
 
-  bigger.append(value)
-  return bigger
+#   bigger.append(value)
+#   return bigger
 
-print(copyArray([1,2,3,4,5,6,7,8,9,10]))
+# print(copyArray([1,2,3,4,5,6,7,8,9,10]))
+
+# PROBLEM 10
+def sumDigits(number):
+  sum = 0
+  while (number > 0):
+    print(sum, number)
+    sum += number % 10
+    number = int(number / 10)
+  return sum
+
+print(sumDigits(111))
