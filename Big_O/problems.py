@@ -60,14 +60,22 @@
 #     return squareRoot(number, max, mid + 1)
 
 # print(squareRoot(225, 225, 0))
+# # O(log n)
 
-# PROBLEM 6
-def squareRoot(number):
-  count = 1
-  while (count * count) < number:
-    count += 1
-    if count * count == number:
-      return count # Perfect square
-  return -1 # No perfect square
+# # PROBLEM 6
+# def squareRoot(number):
+#   count = 1
+#   while (count * count) < number:
+#     count += 1
+#     if count * count == number:
+#       return count # Perfect square
+#   return -1 # No perfect square
 
-print(squareRoot(226))
+# print(squareRoot(226))
+# # O(√n)
+
+# # PROBLEM 7
+# # O(n)
+
+# # PROBELM 8
+# # O(n)
