@@ -31,14 +31,32 @@
 # print(remainder(33, 6))
 # # O(1)
 
-# PROBLEM 4
-def divison(a, b):
-  count = 0
-  sum = b
-  while (sum <= a):
-    sum += b
-    count += 1
-  return count
+# # PROBLEM 4
+# def divison(a, b):
+#   count = 0
+#   sum = b
+#   while (sum <= a):
+#     sum += b
+#     count += 1
+#   return count
 
-print(divison(100, 10))
-# O(a/b)
+# print(divison(100, 10))
+# # O(a/b)
+
+# PROBLEM 5
+def squareRoot(number, max, min):
+  print(number, max, min)
+  if max < min:
+    return -1 # No perfect square
+
+  mid = int((max - min)/2) + min
+  guess = mid * mid
+
+  if guess == number:
+    return mid # Perfect square
+  elif guess > number:
+    return squareRoot(number, mid - 1, min)
+  elif guess < number:
+    return squareRoot(number, max, mid + 1)
+
+print(squareRoot(225, 225, 0))
