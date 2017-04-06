@@ -109,27 +109,40 @@
 
 # print(sumDigits(111))
 
-# PROBLEM 11
-charCount = 26
+# # PROBLEM 11
+# charCount = 26
 
-def printSortedStrings(remaining, prefix):
-  if remaining == 0:
-    if isInOrder(prefix):
-      print(prefix)
-  else:
-    for x in range(charCount):
-      character = ithLetter(x)
-      printSortedStrings(remaining - 1, prefix + character)
+# def printSortedStrings(remaining, prefix):
+#   if remaining == 0:
+#     if isInOrder(prefix):
+#       print(prefix)
+#   else:
+#     for x in range(charCount):
+#       character = ithLetter(x)
+#       printSortedStrings(remaining - 1, prefix + character)
 
-def isInOrder(string):
-  for x in range(len(string)):
-    curr = string[x]
-    prev = string[x - 1]
-    if prev > curr:
-      return False
-  return True
+# def isInOrder(string):
+#   for x in range(len(string)):
+#     curr = string[x]
+#     prev = string[x - 1]
+#     if prev > curr:
+#       return False
+#   return True
 
-def ithLetter(i):
-  return chr(ord("a") + i)
+# def ithLetter(i):
+#   return chr(ord("a") + i)
 
-print(printSortedStrings(4, ""))
+# print(printSortedStrings(4, ""))
+
+# PROBLEM 12
+def intersection(arrayA, arrayB):
+  arrayB.sort()
+  intersect = 0
+
+  for x in range(len(arrayA)):
+    if arrayA[x] in arrayB:
+      intersect += 1
+
+  return intersect
+
+print(intersection([4,2,5,1,3], [9,6,7,1,8]))
