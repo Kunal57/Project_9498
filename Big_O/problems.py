@@ -98,13 +98,38 @@
 
 # print(copyArray([1,2,3,4,5,6,7,8,9,10]))
 
-# PROBLEM 10
-def sumDigits(number):
-  sum = 0
-  while (number > 0):
-    print(sum, number)
-    sum += number % 10
-    number = int(number / 10)
-  return sum
+# # PROBLEM 10
+# def sumDigits(number):
+#   sum = 0
+#   while (number > 0):
+#     print(sum, number)
+#     sum += number % 10
+#     number = int(number / 10)
+#   return sum
 
-print(sumDigits(111))
+# print(sumDigits(111))
+
+# PROBLEM 11
+charCount = 26
+
+def printSortedStrings(remaining, prefix):
+  if remaining == 0:
+    if isInOrder(prefix):
+      print(prefix)
+  else:
+    for x in range(charCount):
+      character = ithLetter(x)
+      printSortedStrings(remaining - 1, prefix + character)
+
+def isInOrder(string):
+  for x in range(len(string)):
+    curr = string[x]
+    prev = string[x - 1]
+    if prev > curr:
+      return False
+  return True
+
+def ithLetter(i):
+  return chr(ord("a") + i)
+
+print(printSortedStrings(4, ""))
