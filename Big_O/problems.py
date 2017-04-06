@@ -97,6 +97,7 @@
 #   return bigger
 
 # print(copyArray([1,2,3,4,5,6,7,8,9,10]))
+# # O(n^2)
 
 # # PROBLEM 10
 # def sumDigits(number):
@@ -108,6 +109,7 @@
 #   return sum
 
 # print(sumDigits(111))
+# # O(log n)
 
 # # PROBLEM 11
 # charCount = 26
@@ -133,16 +135,18 @@
 #   return chr(ord("a") + i)
 
 # print(printSortedStrings(4, ""))
+# # O(kc^k)
 
-# PROBLEM 12
-def intersection(arrayA, arrayB):
-  arrayB.sort()
-  intersect = 0
+# # PROBLEM 12
+# def intersection(arrayA, arrayB):
+#   arrayB.sort()
+#   intersect = 0
 
-  for x in range(len(arrayA)):
-    if arrayA[x] in arrayB:
-      intersect += 1
+#   for x in range(len(arrayA)):
+#     if arrayA[x] in arrayB:
+#       intersect += 1
 
-  return intersect
+#   return intersect
 
-print(intersection([4,2,5,1,3], [9,6,7,1,8]))
+# print(intersection([4,2,5,1,3], [9,6,7,1,8]))
+# # O(a log b + b log b)
