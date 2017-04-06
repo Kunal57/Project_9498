@@ -6,7 +6,7 @@
 #   return sum
 
 # print(product(8,10))
-# # O(N)
+# # O(b)
 
 # # PROBLEM 2
 # def compute(a, b):
@@ -18,7 +18,7 @@
 #     return a * compute(a, b - 1)
 
 # print(compute(3, 3))
-# # O(N)
+# # O(b)
 
 # # PROBLEM 3
 # def remainder(a, b):
@@ -31,14 +31,122 @@
 # print(remainder(33, 6))
 # # O(1)
 
-# PROBLEM 4
-def divison(a, b):
-  count = 0
-  sum = b
-  while (sum <= a):
-    sum += b
-    count += 1
-  return count
+# # PROBLEM 4
+# def divison(a, b):
+#   count = 0
+#   sum = b
+#   while (sum <= a):
+#     sum += b
+#     count += 1
+#   return count
 
-print(divison(100, 10))
-# O(N)
+# print(divison(100, 10))
+# # O(a/b)
+
+# # PROBLEM 5
+# def squareRoot(number, max, min):
+#   print(number, max, min)
+#   if max < min:
+#     return -1 # No perfect square
+
+#   mid = int((max - min)/2) + min
+#   guess = mid * mid
+
+#   if guess == number:
+#     return mid # Perfect square
+#   elif guess > number:
+#     return squareRoot(number, mid - 1, min)
+#   elif guess < number:
+#     return squareRoot(number, max, mid + 1)
+
+# print(squareRoot(225, 225, 0))
+# # O(log n)
+
+# # PROBLEM 6
+# def squareRoot(number):
+#   count = 1
+#   while (count * count) < number:
+#     count += 1
+#     if count * count == number:
+#       return count # Perfect square
+#   return -1 # No perfect square
+
+# print(squareRoot(226))
+# # O(√n)
+
+# # PROBLEM 7
+# # O(n)
+
+# # PROBELM 8
+# # O(n)
+
+# # PROBLEM 9
+# def copyArray(array):
+#   copy = []
+#   copy.append(array[0])
+#   for x in range(1, len(array)):
+#     copy = appendToNew(copy, array[x])
+#   return copy
+
+# def appendToNew(array, value):
+#   bigger = []
+#   for x in range(len(array)):
+#     bigger.append(array[x])
+
+#   bigger.append(value)
+#   return bigger
+
+# print(copyArray([1,2,3,4,5,6,7,8,9,10]))
+# # O(n^2)
+
+# # PROBLEM 10
+# def sumDigits(number):
+#   sum = 0
+#   while (number > 0):
+#     print(sum, number)
+#     sum += number % 10
+#     number = int(number / 10)
+#   return sum
+
+# print(sumDigits(111))
+# # O(log n)
+
+# # PROBLEM 11
+# charCount = 26
+
+# def printSortedStrings(remaining, prefix):
+#   if remaining == 0:
+#     if isInOrder(prefix):
+#       print(prefix)
+#   else:
+#     for x in range(charCount):
+#       character = ithLetter(x)
+#       printSortedStrings(remaining - 1, prefix + character)
+
+# def isInOrder(string):
+#   for x in range(len(string)):
+#     curr = string[x]
+#     prev = string[x - 1]
+#     if prev > curr:
+#       return False
+#   return True
+
+# def ithLetter(i):
+#   return chr(ord("a") + i)
+
+# print(printSortedStrings(4, ""))
+# # O(kc^k)
+
+# # PROBLEM 12
+# def intersection(arrayA, arrayB):
+#   arrayB.sort()
+#   intersect = 0
+
+#   for x in range(len(arrayA)):
+#     if arrayA[x] in arrayB:
+#       intersect += 1
+
+#   return intersect
+
+# print(intersection([4,2,5,1,3], [9,6,7,1,8]))
+# # O(a log b + b log b)
