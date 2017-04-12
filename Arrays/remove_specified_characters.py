@@ -12,4 +12,4 @@ def removeCharacters(string, removeChars):
 
 
 print(removeCharacters("Battle of the Vowels: Hawaii vs. Grozny", "aeiou"))
-# O(n^2)
+# O(n)
