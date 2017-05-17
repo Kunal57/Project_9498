@@ -21,8 +21,9 @@ int main(void){
 char *removeChars(char s[], char r[])
 {
   int index;
-  int k = 0;
   char alpha[26];
+  int k = 0;
+
 
   for(int i = 0; i < 26; i++){
     alpha[i] = 0;
