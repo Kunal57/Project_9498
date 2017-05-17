@@ -13,30 +13,32 @@ int main(void){
 
   char word[] = "teeter";
 
-  printf("%c\n", nonrepeat_character(word[]));
+  printf("%c\n", nonrepeat_character(word));
 
-  retunr 0;
+  return 0;
 }
 
 int nonrepeat_character(char word[]){
 
   struct hashtable alpha[26];
+  for(int z = 0; z < 26; z++){
+    alpha[z].letter = 'a' + z;
+    alpha[z].freq = 0;
+  }
 
-  for(int i = 0; word[i] != '\0', i++){
+  for(int i = 0; word[i] != '\0'; i++){
     int index = word[i] - 'a';
 
-    if((alpha[index] -> freq) < 1){
-      alpha[index] -> letter = word[i];
-      alpha[index] -> freq = 1;
-    }
-    else if((alpha[index] -> freq) > 0){
-      alpha[index] -> freq += 1;
+    if((alpha[index].letter) == word[i]){
+      alpha[index].freq += 1;
     }
   }
 
-  for(int x = 0; x < 26; x++){
-    if((alpha[x] -> freq) == 1){
-      return alpha[x] -> letter;
+  for(int x = 0; word[x] != '\0'; x++){
+    int index = word[x] - 'a';
+
+    if((alpha[index].freq) == 1){
+      return alpha[index].letter;
     }
   }
 
