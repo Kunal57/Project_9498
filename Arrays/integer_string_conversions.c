@@ -18,19 +18,38 @@ int main(void){
 
 int stringToInt(char s[]){
   int number = 0;
-  int length = strlen(s) - 1;
+  int length = strlen(s);
   int sign = 1;
-  int place = 1;
 
-  for(int i = length; i >= 0; i--){
+  for(int i = 0; i < length; i++){
     if(s[i] == '-'){
       sign = -1;
     }
     else{
       int num = s[i] - '0';
-      number += place * num;
-      place *= 10;
+      number *= 10;
+      number += num;
     }
   }
   return number * sign;
 }
+
+// My WhiteBoard Solution
+// int stringToInt(char s[]){
+//   int number = 0;
+//   int length = strlen(s) - 1;
+//   int sign = 1;
+//   int place = 1;
+
+//   for(int i = length; i >= 0; i--){
+//     if(s[i] == '-'){
+//       sign = -1;
+//     }
+//     else{
+//       int num = s[i] - '0';
+//       number += place * num;
+//       place *= 10;
+//     }
+//   }
+//   return number * sign;
+// }
