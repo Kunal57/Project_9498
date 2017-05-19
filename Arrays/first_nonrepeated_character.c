@@ -1,4 +1,4 @@
-// Write an efficient function to find the first non-repeated character in a string. For instance, the first non-repeated character in "total" is "o" and the first non-repeated character in "tweeter" is "r". Discuss the efficiency of your algorithm.
+// Write an efficient function to find the first non-repeated character in a string. For instance, the first non-repeated character in "total" is "o" and the first non-repeated character in "teeter" is "r". Discuss the efficiency of your algorithm.
 
 #include <stdio.h>
 
