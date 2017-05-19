@@ -3,36 +3,37 @@
 #include <stdio.h>
 #include <string.h>
 
-int stringToInt(char s[]);
+// String to Integer Function
+// int stringToInt(char s[]);
 
-int main(void){
-  char number[] = "-1234";
-  int num;
+// int main(void){
+//   char number[] = "-1234";
+//   int num;
 
-  num = stringToInt(number);
+//   num = stringToInt(number);
 
-  printf("%i\n", num);
+//   printf("%i\n", num);
 
-  return 0;
-}
+//   return 0;
+// }
 
-int stringToInt(char s[]){
-  int number = 0;
-  int length = strlen(s);
-  int sign = 1;
+// int stringToInt(char s[]){
+//   int number = 0;
+//   int length = strlen(s);
+//   int sign = 1;
 
-  for(int i = 0; i < length; i++){
-    if(s[i] == '-'){
-      sign = -1;
-    }
-    else{
-      int num = s[i] - '0';
-      number *= 10;
-      number += num;
-    }
-  }
-  return number * sign;
-}
+//   for(int i = 0; i < length; i++){
+//     if(s[i] == '-'){
+//       sign = -1;
+//     }
+//     else{
+//       int num = s[i] - '0';
+//       number *= 10;
+//       number += num;
+//     }
+//   }
+//   return number * sign;
+// }
 
 // My WhiteBoard Solution
 // int stringToInt(char s[]){
@@ -53,3 +54,54 @@ int stringToInt(char s[]){
 //   }
 //   return number * sign;
 // }
+
+// Integer to String Function
+void intToString(int number, char s[]);
+void reverseString(char s[]);
+
+int main(void){
+  int number = -1234;
+  char string[10];
+
+  intToString(number, string);
+
+  printf("%s\n", string);
+
+  return 0;
+}
+
+void intToString(int number, char s[]){
+  int num = number;
+  int position = 0;
+  int sign = 1;
+
+  if(num < 0){
+    sign = -1;
+    num *= sign;
+  }
+
+  while(num > 0){
+    int remainder = num % 10;
+    s[position++] = remainder + '0';
+    num /= 10;
+  }
+
+  if(sign == -1)
+  {
+    s[position++] = '-';
+  }
+
+  s[position] = '\0';
+
+  reverseString(s);
+}
+
+void reverseString(char s[]){
+  int length = strlen(s) - 1;
+
+  for(int i = 0; i < length/2; i++){
+    int temp = s[i];
+    s[i] = s[length - i];
+    s[length - i] = temp;
+  }
+}
