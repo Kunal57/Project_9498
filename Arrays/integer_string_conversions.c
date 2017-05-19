@@ -80,11 +80,11 @@ void intToString(int number, char s[]){
     num *= sign;
   }
 
-  while(num > 0){
+  do {
     int remainder = num % 10;
     s[position++] = remainder + '0';
     num /= 10;
-  }
+  } while(num > 0);
 
   if(sign == -1)
   {
@@ -99,7 +99,7 @@ void intToString(int number, char s[]){
 void reverseString(char s[]){
   int length = strlen(s) - 1;
 
-  for(int i = 0; i < length/2; i++){
+  for(int i = 0; i < length/2 + 1; i++){
     int temp = s[i];
     s[i] = s[length - i];
     s[length - i] = temp;
