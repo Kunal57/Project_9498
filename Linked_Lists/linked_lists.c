@@ -3,51 +3,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node{
+typedef struct node{
   int number;
   struct node *next;
-};
+} node;
+
+node *addToList(node *head, int number);
 
 int main(void){
-  struct node *head;
+  node *head;
   head = NULL;
 
-  struct node *temp;
-  temp = (struct node*) malloc(sizeof(struct node));
+  head = addToList(head, 12);
+  head = addToList(head, 23);
+  head = addToList(head, 7);
+  head = addToList(head, 87);
+  head = addToList(head, 11);
 
-  temp -> number = 12;
-  temp -> next = NULL;
-  head = temp;
-
-  temp = (struct node*) malloc(sizeof(struct node));
-
-  temp -> number = 23;
-  temp -> next = NULL;
-
-  struct node *temp1 = head;
-  while((temp1 -> next) != NULL){
-    temp1 = temp1 -> next;
-  }
-
-  temp1 -> next = temp;
-
-  temp = (struct node*) malloc(sizeof(struct node));
-
-  temp -> number = 7;
-  temp -> next = NULL;
-
+  node *temp1 = head;
   temp1 = head;
-  while((temp1 -> next) != NULL){
-    temp1 = temp1 -> next;
-  }
 
-  temp1 -> next = temp;
-
-  temp1 = head;
   while(temp1 -> next != NULL){
     printf("%i\n", temp1 -> number);
     temp1 = temp1 -> next;
   }
+  printf("%i\n", temp1 -> number);
 
   return 0;
+}
+
+node *addToList(node *head, int number){
+  node *temp;
+  temp = (node *) malloc(sizeof(node));
+
+  temp -> number = number;
+  temp -> next = NULL;
+
+  if(head == NULL){
+    return temp;
+  }
+  else{
+    node *temp1 = head;
+    while(temp1 -> next != NULL){
+      temp1 = temp1 -> next;
+    }
+    temp1 -> next = temp;
+  }
+
+  return head;
 }
