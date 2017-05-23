@@ -8,47 +8,46 @@ typedef struct node{
   struct node *next;
 } node;
 
-node *addToList(node *head, int number);
+void insert(int number);
+void print();
+
+node *head = NULL;
 
 int main(void){
-  node *head;
-  head = NULL;
 
-  head = addToList(head, 12);
-  head = addToList(head, 23);
-  head = addToList(head, 7);
-  head = addToList(head, 87);
-  head = addToList(head, 11);
+  int i, x, k;
 
-  node *temp1 = head;
-  temp1 = head;
+  printf("Amount of Numbers: \n");
+  scanf("%i", &i);
 
-  while(temp1 -> next != NULL){
-    printf("%i\n", temp1 -> number);
-    temp1 = temp1 -> next;
+  for(x = 0; x < i; x++){
+    printf("Number: ");
+    scanf("%i", &k);
+    insert(k);
+    print();
   }
-  printf("%i\n", temp1 -> number);
 
   return 0;
 }
 
-node *addToList(node *head, int number){
+void insert(int number){
   node *temp;
-  temp = (node *) malloc(sizeof(node));
+  temp = malloc(sizeof(node));
 
   temp -> number = number;
-  temp -> next = NULL;
+  temp -> next = head;
 
-  if(head == NULL){
-    return temp;
-  }
-  else{
-    node *temp1 = head;
-    while(temp1 -> next != NULL){
-      temp1 = temp1 -> next;
-    }
-    temp1 -> next = temp;
+  head = temp;
+}
+
+void print(){
+  node *temp;
+  temp = head;
+
+  while(temp -> next != NULL){
+    printf("%i ", temp -> number);
+    temp = temp -> next;
   }
 
-  return head;
+  printf("%i\n", temp -> number);
 }
