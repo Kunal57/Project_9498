@@ -16,19 +16,33 @@ void print(void);
 
 int main(void){
   head = NULL;
+  int x;
+  int i;
 
-  push(12);
-  push(23);
-  push(7);
-  push(87);
-  push(11);
+  while(x != 4){
+    printf("\nEnter a Stack Command Number\n1. Push\n2. Pop\n3. Print\n4. Exit\nCommand: ");
 
-  printf("%i\n", pop());
-  printf("%i\n", pop());
+    scanf("%i", &x);
 
-  printf("\nLinked List Values:\n");
-  print();
-
+    switch (x){
+      case 4:
+        printf("Exiting the Stack!\n");
+        return 0;
+      case 1:
+        printf("Enter a number: ");
+        scanf("%i", &i);
+        push(i);
+        printf("The number %i has been placed in the stack!\n", i);
+        break;
+      case 2:
+        printf("The stack outputted a value of %i\n", pop());
+        break;
+      case 3:
+        printf("The values in the stack are listed below:\n");
+        print();
+        break;
+    }
+  }
   return 0;
 }
 
