@@ -4,13 +4,13 @@
 #include <stdlib.h>
 
 typedef struct node{
-  int number;
   struct node *next;
+  int data;
 } node;
 
 node *head;
 
-void push(int number);
+void push(int data);
 int pop(void);
 void print(void);
 
@@ -46,11 +46,11 @@ int main(void){
   return 0;
 }
 
-void push(int number){
+void push(int data){
   node *temp;
   temp = malloc(sizeof(node));
 
-  temp -> number = number;
+  temp -> data = data;
   temp -> next = head;
 
   head = temp;
@@ -65,11 +65,11 @@ int pop(void){
 
   head = temp -> next;
 
-  int number = temp -> number;
+  int data = temp -> data;
 
   free(temp);
 
-  return number;
+  return data;
 }
 
 void print(void){
@@ -79,8 +79,8 @@ void print(void){
   }
   node *temp = head;
   while(temp -> next != NULL){
-    printf("%i ", temp -> number);
+    printf("%i ", temp -> data);
     temp = temp -> next;
   }
-  printf("%i\n", temp -> number);
+  printf("%i\n", temp -> data);
 }
