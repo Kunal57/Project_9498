@@ -1,71 +1,144 @@
 // Implement a Linked List in C
 
-// DELETE, INSERT, AND PRINT FUNCTIONS
+// Insert, Delete, and Print Functions
+// Functions return a boolean and alter the head & data pointer
 #include <stdio.h>
 #include <stdlib.h>
 
 typedef struct node{
-  int number;
   struct node *next;
+  int data;
 } node;
 
-node *head;
+typedef int bool;
 
-void insert(int number);
-void print(void);
-void delete(int position);
+#define true 0
+#define false 1
+
+bool insert(node **head, int *data);
+bool delete(node **head, int **data);
+bool print(node **head);
 
 int main(void){
-  head = NULL;
+  node *head = NULL;
+  int number;
+  int *data = &number;
 
-  insert(12);
-  insert(23);
-  insert(7);
-  insert(87);
-  insert(11);
-  insert(2);
+  number = 12;
+  insert(&head, data);
+  number = 23;
+  insert(&head, data);
 
-  delete(4);
-  delete(3); // 2 11 87 12
+  delete(&head, &data);
+  print(&head);
 
-  print();
-
-  return 0;
+  return true;
 }
 
-void insert(int number){
+bool insert(node **head, int *data){
   node *temp;
+
   temp = malloc(sizeof(node));
+  if(!temp){
+    return false;
+  }
 
-  temp -> number = number;
-  temp -> next = NULL;
+  temp -> data = *data;
+  temp -> next = *head;
 
-  temp -> next = head;
-  head = temp;
+  *head = temp;
+  return true;
 }
 
-void print(void){
-  node *temp = head;
+bool delete(node **head, int **data){
+  node *temp = *head;
+
+  *data = &temp -> data;
+
+  *head = temp -> next;
+  free(temp);
+
+  return true;
+}
+
+bool print(node **head){
+  node *temp = *head;
 
   while(temp -> next != NULL){
-    printf("%i ", temp -> number);
+    printf("%i ", temp -> data);
     temp = temp -> next;
   }
-  printf("%i\n", temp -> number);
+  printf("%i\n", temp -> data);
+
+  return true;
 }
 
-void delete(int position){
-  node *temp = head;
+// DELETE, INSERT, AND PRINT FUNCTIONS
+// #include <stdio.h>
+// #include <stdlib.h>
 
-  for(int i = 0; i < position - 1; i++){
-    temp = temp -> next;
-  }
+// typedef struct node{
+//   int number;
+//   struct node *next;
+// } node;
 
-  node *temp2 = temp -> next;
+// node *head;
 
-  temp -> next = temp2 -> next;
-  free(temp2);
-}
+// void insert(int number);
+// void print(void);
+// void delete(int position);
+
+// int main(void){
+//   head = NULL;
+
+//   insert(12);
+//   insert(23);
+//   insert(7);
+//   insert(87);
+//   insert(11);
+//   insert(2);
+
+//   delete(4);
+//   delete(3); // 2 11 87 12
+
+//   print();
+
+//   return 0;
+// }
+
+// void insert(int number){
+//   node *temp;
+//   temp = malloc(sizeof(node));
+
+//   temp -> number = number;
+//   temp -> next = NULL;
+
+//   temp -> next = head;
+//   head = temp;
+// }
+
+// void print(void){
+//   node *temp = head;
+
+//   while(temp -> next != NULL){
+//     printf("%i ", temp -> number);
+//     temp = temp -> next;
+//   }
+//   printf("%i\n", temp -> number);
+// }
+
+// void delete(int position){
+//   node *temp = head;
+
+//   for(int i = 0; i < position - 1; i++){
+//     temp = temp -> next;
+//   }
+
+//   node *temp2 = temp -> next;
+
+//   temp -> next = temp2 -> next;
+//   free(temp2);
+// }
 
 // INSERT AT NTH POSITION & PRINT FUNCTIONS
 // #include <stdio.h>
