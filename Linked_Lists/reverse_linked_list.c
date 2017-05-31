@@ -8,12 +8,16 @@ typedef struct node{
   struct node *next;
 } node;
 
+typedef int bool;
+#define true 0
+#define false 1
+
 node *head;
 
 void insert(int number);
 void print(void);
 void delete(int position);
-void reverse(void);
+bool reverse(node **head);
 
 int main(void){
   head = NULL;
@@ -34,7 +38,7 @@ int main(void){
   insert(87);
   insert(11);
 
-  reverse();
+  reverse(&head);
 
   print();
 
@@ -78,10 +82,10 @@ void delete(int position){
   }
 }
 
-void reverse(){
+bool reverse(node **head){
   node *prev, *current, *next;
 
-  current = head;
+  current = *head;
   prev = NULL;
 
   while(current != NULL){
@@ -91,5 +95,6 @@ void reverse(){
     current = next;
   }
 
-  head = prev;
+  *head = prev;
+  return true;
 }
