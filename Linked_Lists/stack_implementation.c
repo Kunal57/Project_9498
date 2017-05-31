@@ -104,28 +104,6 @@ bool delete(node **head){
   return true;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // IMPLEMENTATION 1
 // #include <stdio.h>
 // #include <stdlib.h>
