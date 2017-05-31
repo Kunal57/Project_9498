@@ -16,10 +16,14 @@ typedef struct node{
 
 bool push(node **head, void *data);
 bool pop(node **head, void **data);
+bool create(node **head);
+bool delete(node **head);
 bool print(node **head);
 
 int main(void){
-  node *head = NULL;
+  node *head;
+  create(&head);
+
   int number1, number2, number3;
   void *data;
 
@@ -36,6 +40,10 @@ int main(void){
 
   pop(&head, &data);
   printf("%d\n", *(int*)data);
+
+  print(&head);
+
+  delete(&head);
 
   print(&head);
 
@@ -80,7 +88,21 @@ bool print(node **head){
   return true;
 }
 
+bool create(node **head){
+  *head = NULL;
+  return true;
+}
 
+bool delete(node **head){
+  node *next;
+  while(*head){
+    next = (*head) -> next;
+    free(*head);
+    *head = next;
+  }
+
+  return true;
+}
 
 
 
