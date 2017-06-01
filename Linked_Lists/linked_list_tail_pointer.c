@@ -18,6 +18,7 @@ node *tail;
 bool push(int data);
 bool pop(int *data);
 bool insertAfter(int data, int newData);
+bool delete(int data);
 bool print(void);
 
 int main(void){
@@ -31,6 +32,8 @@ int main(void){
   insertAfter(12, 11);
   insertAfter(7, 2);
   insertAfter(23, 0);
+
+  delete(0);
 
   int num;
   pop(&num);
@@ -102,6 +105,32 @@ bool insertAfter(int data, int newData){
 
   if(temp2 -> next == NULL){
     tail = temp;
+  }
+
+  return true;
+}
+
+bool delete(int data){
+  node *current, *prev;
+  current = head;
+  if(current -> data == data){
+    head = current -> next;
+    free(current);
+    return true;
+  }
+
+  while(current -> data != data){
+    prev = current;
+    current = current -> next;
+    if(current == NULL){
+      return false;
+    }
+  }
+
+  prev -> next = current -> next;
+
+  if(prev -> next == NULL){
+    tail = prev;
   }
 
   return true;
