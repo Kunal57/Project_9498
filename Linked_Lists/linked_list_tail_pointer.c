@@ -9,55 +9,47 @@ typedef int bool;
 
 typedef struct node{
   struct node *next;
-  void *data;
+  int data;
 } node;
 
 node *head;
 node *tail;
 
-bool push(void *number);
-bool pop(void **number);
+bool push(int data);
+bool pop(int *data);
+bool insertAfter(int data, int newData);
 bool print(void);
 
 int main(void){
   head = NULL;
   tail = NULL;
 
-  int num = 12;
-  int num2 = 23;
-  int num3 = 7;
-  int num4;
+  push(12);
+  push(23);
+  push(7);
 
-  push(&num);
-  push(&num2);
-  push(&num3);
+  insertAfter(12, 11);
+  insertAfter(7, 2);
+  insertAfter(23, 0);
 
-  print();
+  int num;
+  pop(&num);
 
-  void *number;
-  pop(&number);
-
-  printf("%i\n", *(int*)number);
+  printf("%i\n", num);
 
   print();
-
-  pop(&number);
-  pop(&number);
-
-  // No Values inside the Linked List so Tail should be NULL
-  printf("%i\n", tail == NULL);
 
   return true;
 }
 
-bool push(void *number){
+bool push(int data){
   node *temp;
   temp = malloc(sizeof(node));
   if(!temp){
     return false;
   }
 
-  temp -> data = number;
+  temp -> data = data;
   temp -> next = head;
 
   head = temp;
@@ -68,14 +60,14 @@ bool push(void *number){
   return true;
 }
 
-bool pop(void **number){
+bool pop(int *data){
   if(head == NULL){
     return false;
   }
 
   node *temp = head;
 
-  *number = temp -> data;
+  *data = temp -> data;
 
   head = temp -> next;
 
@@ -88,11 +80,38 @@ bool pop(void **number){
   return true;
 }
 
+bool insertAfter(int data, int newData){
+  node *temp;
+  temp = malloc(sizeof(node));
+  if(!temp){
+    return false;
+  }
+  temp -> next = NULL;
+  temp -> data = newData;
+
+  node *temp2 = head;
+  while(temp2 -> data != data){
+    temp2 = temp2 -> next;
+    if(temp2 == NULL){
+      head = temp;
+      return true;
+    }
+  }
+  temp -> next = temp2 -> next;
+  temp2 -> next = temp;
+
+  if(temp2 -> next == NULL){
+    tail = temp;
+  }
+
+  return true;
+}
+
 bool print(void){
   node *temp = head;
 
   while(temp != NULL){
-    printf("%i ", *(int*)temp -> data);
+    printf("%i ", temp -> data);
     temp = temp -> next;
   }
   printf("\n");
